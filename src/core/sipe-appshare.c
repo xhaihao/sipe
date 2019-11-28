@@ -635,6 +635,7 @@ connect_conference(struct sipe_core_private *sipe_private,
 					  _("Application sharing error"),
 					  _("Couldn't connect application sharing"));
 		sipe_backend_media_hangup(call->backend_private, FALSE);
+		return;
 	}
 
 	sipe_media_stream_add_extra_attribute(stream, "connection", "new");

@@ -1577,6 +1577,7 @@ void sipe_core_media_connect_conference(struct sipe_core_public *sipe_public,
 					  _("Error creating audio stream"));
 
 		sipe_media_hangup(call_private);
+		return;
 	}
 
 	stream->mute_cb = conference_audio_muted_cb;
@@ -2385,6 +2386,7 @@ void
 sipe_media_stream_add_extra_attribute(struct sipe_media_stream *stream,
 				      const gchar *name, const gchar *value)
 {
+	g_return_if_fail(stream);
 	SIPE_MEDIA_STREAM_PRIVATE->extra_sdp =
 			sipe_utils_nameval_add(SIPE_MEDIA_STREAM_PRIVATE->extra_sdp,
 					       name, value);
